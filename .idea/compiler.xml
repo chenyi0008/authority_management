@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tools-core" />
+        <module name="tools-databases" />
         <module name="tools-common" />
+        <module name="tools-log" />
+        <module name="tools-core" />
+        <module name="tools-j2cache" />
       </profile>
     </annotationProcessing>
   </component>
@@ -16,7 +19,10 @@
       <module name="parent" options="-parameters" />
       <module name="tools-common" options="-parameters" />
       <module name="tools-core" options="-parameters" />
+      <module name="tools-databases" options="-parameters" />
+      <module name="tools-j2cache" options="-parameters" />
       <module name="tools-jwt" options="-parameters" />
+      <module name="tools-log" options="-parameters" />
       <module name="tools-validator" options="-parameters" />
     </option>
   </component>
