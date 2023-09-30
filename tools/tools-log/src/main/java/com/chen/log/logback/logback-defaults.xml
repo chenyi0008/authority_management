@@ -80,7 +80,7 @@
         <appender-ref ref="ROOT_APPENDER"/>
     </appender>
 
-    <!-- 整个项目com.itheima.pinda包下的的所有日志， 不包括第三方包 -->
+    <!-- 整个项目com.chen包下的的所有日志， 不包括第三方包 -->
     <appender name="PROJECT_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${log.path}/${spring.application.name}/project.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -211,10 +211,10 @@
             <appender-ref ref="ASYNC_ROOT_APPENDER"/>
             <appender-ref ref="ASYNC_CONSOLE_APPENDER"/>
         </root>
-        <logger name="com.itheima.pinda" additivity="true" level="${log.level.console}">
+        <logger name="com.chen" additivity="true" level="${log.level.console}">
             <appender-ref ref="ASYNC_PROJECT_APPENDER"/>
         </logger>
-        <logger name="com.itheima.pinda.common.handler" additivity="true" level="${log.level.console}">
+        <logger name="com.chen.common.handler" additivity="true" level="${log.level.console}">
             <appender-ref ref="ASYNC_EXCEPTION_APPENDER"/>
         </logger>
 
@@ -236,10 +236,10 @@
             <appender-ref ref="CONSOLE_APPENDER"/>
             <appender-ref ref="ROOT_APPENDER"/>
         </root>
-        <logger name="com.itheima.pinda" additivity="true" level="${log.level.console}">
+        <logger name="com.chen" additivity="true" level="${log.level.console}">
             <appender-ref ref="PROJECT_APPENDER"/>
         </logger>
-        <logger name="com.itheima.pinda.common.handler" additivity="true" level="${log.level.console}">
+        <logger name="com.chen.common.handler" additivity="true" level="${log.level.console}">
             <appender-ref ref="EXCEPTION_APPENDER"/>
         </logger>
 

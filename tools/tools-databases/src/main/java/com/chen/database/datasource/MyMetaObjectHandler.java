@@ -2,10 +2,10 @@ package com.chen.database.datasource;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
-import com.itheima.pinda.base.entity.Entity;
-import com.itheima.pinda.base.entity.SuperEntity;
-import com.itheima.pinda.base.id.IdGenerate;
-import com.itheima.pinda.context.BaseContextHandler;
+import com.chen.base.entity.Entity;
+import com.chen.base.entity.SuperEntity;
+import com.chen.base.id.IdGenerate;
+import com.chen.context.BaseContextHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 

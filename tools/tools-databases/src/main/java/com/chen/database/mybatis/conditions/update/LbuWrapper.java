@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
-import com.itheima.pinda.database.mybatis.typehandler.BaseLikeTypeHandler;
+import com.chen.database.mybatis.typehandler.BaseLikeTypeHandler;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 相关的配置信息
  *
  */
-@ConfigurationProperties(prefix = "net/oschina/j2cache")
+@ConfigurationProperties(prefix = "net-oschina-j2cache")
 public class J2CacheConfig {
     private String configLocation = "/j2cache.properties";
 

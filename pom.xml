@@ -8,6 +8,7 @@
     <artifactId>authorityManagement</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <name>am</name>
     <modules>
         <module>tools</module>
         <module>parent</module>

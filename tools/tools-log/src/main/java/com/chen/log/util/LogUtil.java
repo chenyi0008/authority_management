@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
 
-import com.itheima.pinda.log.annotation.SysLog;
+import com.chen.log.annotation.SysLog;
 
 import org.aspectj.lang.JoinPoint;
 

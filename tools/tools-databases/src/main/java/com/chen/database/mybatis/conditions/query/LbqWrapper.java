@@ -9,9 +9,9 @@ import com.baomidou.mybatisplus.core.metadata.TableInfoHelper;
 import com.baomidou.mybatisplus.core.toolkit.ArrayUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
-import com.itheima.pinda.base.entity.SuperEntity;
-import com.itheima.pinda.database.mybatis.typehandler.BaseLikeTypeHandler;
-import com.itheima.pinda.utils.StrPool;
+import com.chen.base.entity.SuperEntity;
+import com.chen.database.mybatis.typehandler.BaseLikeTypeHandler;
+import com.chen.utils.StrPool;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
