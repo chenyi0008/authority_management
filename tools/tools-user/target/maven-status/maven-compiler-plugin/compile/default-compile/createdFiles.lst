@@ -1,0 +1,15 @@
+com\chen\user\feign\UserResolveApi.class
+com\chen\user\model\SysStation.class
+com\chen\user\model\SysOrg.class
+com\chen\user\model\SysUser$SysUserBuilder.class
+com\chen\user\resolver\ContextArgumentResolver.class
+com\chen\user\feign\fallback\UserResolveApiFallback$1.class
+com\chen\user\feign\UserQuery.class
+com\chen\user\model\SysUser.class
+com\chen\user\interceptor\ContextHandlerInterceptor.class
+com\chen\user\annotation\LoginUser.class
+com\chen\user\config\LoginArgResolverConfig.class
+com\chen\user\feign\UserQuery$UserQueryBuilder.class
+com\chen\user\feign\fallback\UserResolveApiFallback.class
+com\chen\user\model\SysRole.class
+com\chen\user\annotation\EnableLoginArgResolver.class

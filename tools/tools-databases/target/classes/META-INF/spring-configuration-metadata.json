@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "name": "pinda.database",
+      "type": "com.chen.database.properties.DatabaseProperties",
+      "sourceType": "com.chen.database.properties.DatabaseProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "pinda.database.is-block-attack",
+      "type": "java.lang.Boolean",
+      "description": "攻击 SQL 阻断解析器",
+      "sourceType": "com.chen.database.properties.DatabaseProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "pinda.database.transaction-attribute-list",
+      "type": "java.util.List<java.lang.String>",
+      "description": "统一管理事务的方法名",
+      "sourceType": "com.chen.database.properties.DatabaseProperties"
+    },
+    {
+      "name": "pinda.database.transaction-scan-package",
+      "type": "java.lang.String",
+      "description": "事务扫描基础包",
+      "sourceType": "com.chen.database.properties.DatabaseProperties",
+      "defaultValue": "com.itheima.pinda"
+    },
+    {
+      "name": "pinda.database.tx-timeout",
+      "type": "java.lang.Integer",
+      "description": "事务超时时间",
+      "sourceType": "com.chen.database.properties.DatabaseProperties",
+      "defaultValue": 0
+    }
+  ],
+  "hints": []
+}

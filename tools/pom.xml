@@ -22,6 +22,9 @@
         <module>tools-j2cache</module>
         <module>tools-log</module>
         <module>tools-user</module>
+        <module>tools-dozer</module>
+        <module>tools-xss</module>
+        <module>tools-swagger2</module>
     </modules>
 
     <dependencyManagement>

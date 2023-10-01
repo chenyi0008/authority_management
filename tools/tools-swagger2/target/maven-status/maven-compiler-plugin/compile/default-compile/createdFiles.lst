@@ -1,0 +1,9 @@
+com\chen\swagger2\SwaggerAutoConfiguration.class
+com\chen\swagger2\SwaggerProperties$Contact.class
+com\chen\swagger2\SwaggerProperties.class
+com\chen\swagger2\SwaggerProperties$Markdown.class
+com\chen\swagger2\SwaggerProperties$DocketInfo.class
+com\chen\swagger2\SwaggerProperties$GlobalOperationParameter.class
+com\chen\swagger2\Swagger2Configuration.class
+com\chen\swagger2\SwaggerProperties$Basic.class
+META-INF\spring-configuration-metadata.json

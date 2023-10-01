@@ -20,6 +20,7 @@
     <version>1.0-SNAPSHOT</version>
     <groupId>com.chen</groupId>
 
+
     <!-- 环境 -->
     <profiles>
         <!-- 开发 -->
@@ -67,8 +68,10 @@
 
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+
+
+        <!--maven plugin-->
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 
         <!--validator-->
         <hibernate.validator.version>6.1.0.Final</hibernate.validator.version>
@@ -105,6 +108,27 @@
 
         <!--jwt-->
         <jjwt.version>0.7.0</jjwt.version>
+
+        <!--dozer-->
+        <dozer.version>6.5.0</dozer.version>
+
+        <!--xss-->
+        <antisamy.version>1.5.7</antisamy.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons-io.version>2.6</commons-io.version>
+        <hutool.version>5.1.0</hutool.version>
+        <fastjson.version>1.2.62</fastjson.version>
+
+
+        <!-- auth-server -->
+        <asm.version>5.0.4</asm.version>
+        <spring.cloud.version>Hoxton.SR1</spring.cloud.version>
+
+        <!-- swagger2 -->
+        <knife4j.version>2.0.1</knife4j.version>
+
+        <slf4j.version>1.6.1</slf4j.version>
+
 
 
 
@@ -260,6 +284,86 @@
                 <version>${jjwt.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.github.dozermapper</groupId>
+                <artifactId>dozer-spring-boot-starter</artifactId>
+                <version>${dozer.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.owasp.antisamy</groupId>
+                <artifactId>antisamy</artifactId>
+                <version>${antisamy.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--  Hutool 提供了许多实用的工具方法，包括字符串处理、日期时间处理、文件操作、加密解密、网络操作、数据转换等等。-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- Knife4j 的 Spring Boot 启动器依赖。Knife4j 是一个用于生成和管理 API 文档的工具，它提供了一种简单的方式来自动生成 Swagger 文档并展示给开发者和团队成员。-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
+            <!--   Knife4j 的前端界面依赖。它包含了一个可视化的界面，允许你浏览和测试你的 API 接口。该依赖通常用于在 Web 浏览器中查看和交互式测试 API 文档。-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-ui</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
+            <!--   允许你在你的 Spring Boot 应用程序中使用 Bean Validation 注解来描述模型类的验证规则，并将这些规则集成到生成的 Swagger API 文档中。-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-bean-validators</artifactId>
+                <version>${springfox.swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-core</artifactId>
+                <version>${springfox.swagger2.version}</version>
+            </dependency>
+
+
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+
 
         </dependencies>
     </dependencyManagement>
@@ -294,6 +398,71 @@
             <url>https://repo.spring.io/libs-snapshot-local</url>
         </snapshotRepository>
     </distributionManagement>
+
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <!--                <plugin>-->
+                <!--                    <groupId>org.springframework.boot</groupId>-->
+                <!--                    <artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--                    <executions>-->
+                <!--                        <execution>-->
+                <!--                            <goals>-->
+                <!--                                <goal>repackage</goal>-->
+                <!--                                <goal>build-info</goal>-->
+                <!--                            </goals>-->
+                <!--                        </execution>-->
+                <!--                    </executions>-->
+                <!--                </plugin>-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!-- resources资源插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <!-- 后缀为pem、pfx的证书文件 -->
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>pem</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>pfx</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>p12</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>key</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
+            <!-- java文档插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+        </plugins>
+    </build>
+
 
 
 

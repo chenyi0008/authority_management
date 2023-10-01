@@ -63,6 +63,28 @@
 
     </dependencies>
 
+    <build>
+        <resources>
+
+            <!--指定了src/main/java目录，然后通过<includes>元素指定了要包含的文件，这里是所有的.xml文件。
+            <filtering>元素设置为true，表示Maven在处理这些资源文件时会执行资源过滤。
+            资源过滤是一种在构建过程中替换文件中特定占位符的机制。
+            通常，这用于替换配置文件中的变量或属性值，使其与构建环境或配置文件中的属性匹配。-->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+
+            <!--指定了src/main/resources目录，这通常是存放项目的静态资源文件、配置文件等的地方-->
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>

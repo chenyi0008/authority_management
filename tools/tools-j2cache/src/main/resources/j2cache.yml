@@ -157,7 +157,7 @@ lettuce:
   channel: j2cache
   scheme: redis
   hosts: ${pinda.redis.ip}:${pinda.redis.port}
-  password: ${pinda.redis.password}
+  tpassword: ${pinda.redis.password}
   database: 0
   sentinelMasterId:
   maxTotal: 100

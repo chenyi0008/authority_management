@@ -1,0 +1,5 @@
+com\chen\xss\utils\XssUtils.class
+com\chen\xss\XssAuthConfiguration.class
+com\chen\xss\filter\XssFilter.class
+com\chen\xss\converter\XssStringJsonDeserializer.class
+com\chen\xss\wrapper\XssRequestWrapper.class

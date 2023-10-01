@@ -6,17 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tools-databases" />
         <module name="tools-common" />
         <module name="auth-entity" />
         <module name="auth-server" />
-        <module name="tools-validator" />
-        <module name="tools-user" />
-        <module name="tools-jwt" />
-        <module name="tools-log" />
+        <module name="tools-xss" />
         <module name="tools-core" />
         <module name="tools-j2cache" />
+        <module name="tools-databases" />
+        <module name="tools-validator" />
+        <module name="tools-user" />
+        <module name="tools-dozer" />
+        <module name="tools-jwt" />
+        <module name="tools-log" />
         <module name="gateway" />
+        <module name="tools-swagger2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -35,11 +38,14 @@
       <module name="tools-common" options="-parameters" />
       <module name="tools-core" options="-parameters" />
       <module name="tools-databases" options="-parameters" />
+      <module name="tools-dozer" options="-parameters" />
       <module name="tools-j2cache" options="-parameters" />
       <module name="tools-jwt" options="-parameters" />
       <module name="tools-log" options="-parameters" />
+      <module name="tools-swagger2" options="-parameters" />
       <module name="tools-user" options="-parameters" />
       <module name="tools-validator" options="-parameters" />
+      <module name="tools-xss" options="-parameters" />
     </option>
   </component>
 </project>

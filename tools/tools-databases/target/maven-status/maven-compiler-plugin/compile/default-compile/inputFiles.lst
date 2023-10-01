@@ -1,0 +1,13 @@
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\mybatis\typehandler\BaseLikeTypeHandler.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\parsers\TenantContextHandlerInterceptor.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\properties\DatabaseProperties.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\datasource\BaseDatabaseConfiguration.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\datasource\BaseMybatisConfiguration.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\datasource\MyMetaObjectHandler.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\mybatis\conditions\update\LbuWrapper.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\mybatis\conditions\Wraps.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\mybatis\typehandler\LeftLikeTypeHandler.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\mybatis\typehandler\RightLikeTypeHandler.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\mybatis\conditions\query\LbqWrapper.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\parsers\TenantWebMvcConfigurer.java
+E:\Code\java\Authority Management\tools\tools-databases\src\main\java\com\chen\database\mybatis\typehandler\FullLikeTypeHandler.java

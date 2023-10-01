@@ -53,11 +53,11 @@
 <!--                <artifactId>tools-swagger2</artifactId>-->
 <!--                <version>${project.version}</version>-->
 <!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>com.chen</groupId>-->
-<!--                <artifactId>tools-dozer</artifactId>-->
-<!--                <version>${project.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.chen</groupId>
+                <artifactId>tools-dozer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.chen</groupId>
                 <artifactId>tools-log</artifactId>
@@ -73,11 +73,11 @@
                 <artifactId>tools-jwt</artifactId>
                 <version>${project.version}</version>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>com.chen</groupId>-->
-<!--                <artifactId>tools-xss</artifactId>-->
-<!--                <version>${project.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.chen</groupId>
+                <artifactId>tools-xss</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
