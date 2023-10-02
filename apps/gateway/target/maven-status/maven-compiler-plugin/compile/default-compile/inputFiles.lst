@@ -1,0 +1,7 @@
+E:\Code\java\Authority Management\apps\gateway\src\main\java\com\chen\gateway\ZuulServerApplication.java
+E:\Code\java\Authority Management\apps\gateway\src\main\java\com\chen\gateway\zuul\filter\AccessFilter.java
+E:\Code\java\Authority Management\apps\gateway\src\main\java\com\chen\gateway\zuul\config\ZuulConfiguration.java
+E:\Code\java\Authority Management\apps\gateway\src\main\java\com\chen\gateway\zuul\api\ResourceApi.java
+E:\Code\java\Authority Management\apps\gateway\src\main\java\com\chen\gateway\zuul\api\ResourceApiFallback.java
+E:\Code\java\Authority Management\apps\gateway\src\main\java\com\chen\gateway\zuul\filter\TokenContextFilter.java
+E:\Code\java\Authority Management\apps\gateway\src\main\java\com\chen\gateway\zuul\filter\BaseFilter.java

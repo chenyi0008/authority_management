@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  *
  */
 @Configuration
-@ConditionalOnProperty(name = "pinda.swagger.enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(name = "chen.swagger.enabled", havingValue = "true", matchIfMissing = true)
 @EnableSwagger2
 @ComponentScan(
         basePackages = {

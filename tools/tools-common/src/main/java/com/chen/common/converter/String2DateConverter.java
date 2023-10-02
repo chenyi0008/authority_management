@@ -54,7 +54,7 @@ public class String2DateConverter extends BaseDateConverter<Date> implements Con
             dateFormat.setLenient(false);
             date = dateFormat.parse(dateStr);
         } catch (ParseException e) {
-            log.info("转换日期失败, date={}, format={}", dateStr, format, e);
+//            log.info("转换日期失败, date={}, format={}", dateStr, format, e);
             throw new BizException(BaseException.BASE_VALID_PARAM, e.getMessage());
         }
         return date;

@@ -115,9 +115,6 @@
         <!--xss-->
         <antisamy.version>1.5.7</antisamy.version>
         <commons-lang.version>2.6</commons-lang.version>
-        <commons-io.version>2.6</commons-io.version>
-        <hutool.version>5.1.0</hutool.version>
-        <fastjson.version>1.2.62</fastjson.version>
 
 
         <!-- auth-server -->
@@ -128,6 +125,10 @@
         <knife4j.version>2.0.1</knife4j.version>
 
         <slf4j.version>1.6.1</slf4j.version>
+
+
+        <!-- auth-server -->
+        <easy-captcha.version>1.6.2</easy-captcha.version>
 
 
 
@@ -209,11 +210,6 @@
                 <version>${lombok.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
@@ -257,11 +253,11 @@
                 <artifactId>ip2region</artifactId>
                 <version>${ip2region.version}</version>
             </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>commons-io</groupId>-->
+<!--                <artifactId>commons-io</artifactId>-->
+<!--                <version>${commons-io.version}</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>eu.bitwalker</groupId>
                 <artifactId>UserAgentUtils</artifactId>
@@ -357,12 +353,13 @@
                 <version>${slf4j.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
 
+
+            <dependency>
+                <groupId>com.github.whvcse</groupId>
+                <artifactId>easy-captcha</artifactId>
+                <version>${easy-captcha.version}</version>
+            </dependency>
 
 
         </dependencies>

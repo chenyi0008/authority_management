@@ -15,7 +15,7 @@ import java.util.Map;
  */
 @Data
 //@RefreshScope
-@ConfigurationProperties(prefix = "pinda.swagger")
+@ConfigurationProperties(prefix = "chen.swagger")
 public class SwaggerProperties {
     /**
      * 是否开启swagger

@@ -23,11 +23,11 @@
                 <artifactId>auth-entity</artifactId>
                 <version>${project.version}</version>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>com.chen</groupId>-->
-<!--                <artifactId>tools-user</artifactId>-->
-<!--                <version>${project.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.chen</groupId>
+                <artifactId>tools-user</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.chen</groupId>
                 <artifactId>tools-j2cache</artifactId>
@@ -48,11 +48,11 @@
                 <artifactId>tools-databases</artifactId>
                 <version>${project.version}</version>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>com.chen</groupId>-->
-<!--                <artifactId>tools-swagger2</artifactId>-->
-<!--                <version>${project.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.chen</groupId>
+                <artifactId>tools-swagger2</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.chen</groupId>
                 <artifactId>tools-dozer</artifactId>
