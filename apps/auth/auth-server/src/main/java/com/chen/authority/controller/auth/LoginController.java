@@ -23,6 +23,7 @@ import java.io.IOException;
 @RequestMapping("/anno")
 @Api(tags = "登录控制器",value = "LoginController")
 public class LoginController extends BaseController{
+
     @Autowired
     private ValidateCodeService validateCodeService;
     @Autowired
