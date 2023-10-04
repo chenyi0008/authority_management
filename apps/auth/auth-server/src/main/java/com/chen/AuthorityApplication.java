@@ -18,7 +18,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * 权限服务启动类
+ * 权限服务启动类 dek
  */
 @SpringBootApplication
 @EnableDiscoveryClient

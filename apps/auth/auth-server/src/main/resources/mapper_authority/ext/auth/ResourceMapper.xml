@@ -6,17 +6,17 @@
     <select id="findVisibleResource" parameterType="map" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
-        from pd_auth_resource where 1=1
+        from auth_resource where 1=1
         and id in (
-        SELECT authority_id FROM pd_auth_role_authority ra INNER JOIN pd_auth_user_role ur on ra.role_id = ur.role_id
-        INNER JOIN pd_auth_role r on r.id = ra.role_id
+        SELECT authority_id FROM auth_role_authority ra INNER JOIN auth_user_role ur on ra.role_id = ur.role_id
+        INNER JOIN auth_role r on r.id = ra.role_id
         where ur.user_id = #{userId, jdbcType=BIGINT} and r.`status` = true
         and ra.authority_type = 'RESOURCE'
         )
     </select>
 
     <select id="findMenuIdByResourceId" parameterType="map" resultType="java.lang.Long">
-        SELECT DISTINCT menu_id from pd_auth_resource where id in
+        SELECT DISTINCT menu_id from auth_resource where id in
         <foreach close=")" collection="resourceIdList" item="id" open="(" separator=",">
             #{id}
         </foreach>

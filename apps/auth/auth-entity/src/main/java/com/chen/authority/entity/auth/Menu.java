@@ -27,7 +27,7 @@ import static com.baomidou.mybatisplus.annotation.SqlCondition.LIKE;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("pd_auth_menu")
+@TableName("auth_menu")
 @ApiModel(value = "Menu", description = "菜单")
 public class Menu extends Entity<Long> {
 

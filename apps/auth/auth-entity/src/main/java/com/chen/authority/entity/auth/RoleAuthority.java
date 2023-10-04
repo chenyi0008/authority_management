@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("pd_auth_role_authority")
+@TableName("auth_role_authority")
 @ApiModel(value = "RoleAuthority", description = "角色的资源")
 public class RoleAuthority extends SuperEntity<Long> {
 
@@ -33,8 +33,8 @@ public class RoleAuthority extends SuperEntity<Long> {
 
     /**
      * 资源id
-     * #pd_auth_resource
-     * #pd_auth_menu
+     * #auth_resource
+     * #auth_menu
      */
     @ApiModelProperty(value = "资源id")
     @NotNull(message = "资源id不能为空")
@@ -52,7 +52,7 @@ public class RoleAuthority extends SuperEntity<Long> {
 
     /**
      * 角色id
-     * #pd_auth_role
+     * #auth_role
      */
     @ApiModelProperty(value = "角色id")
     @NotNull(message = "角色id不能为空")

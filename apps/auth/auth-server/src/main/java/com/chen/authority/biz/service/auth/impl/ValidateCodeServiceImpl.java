@@ -1,5 +1,6 @@
 package com.chen.authority.biz.service.auth.impl;
 
+import com.chen.SnowFlakeUtil;
 import com.chen.authority.biz.service.auth.ValidateCodeService;
 import com.chen.common.constant.CacheKey;
 import com.chen.exception.BizException;
@@ -26,16 +27,19 @@ public class ValidateCodeServiceImpl implements ValidateCodeService {
     @Autowired
     private CacheChannel cache;
 
+    @Autowired
+    SnowFlakeUtil snowFlakeUtil;
+
     @Override
-    public void create(String key, HttpServletResponse response) throws IOException {
-        if (StringUtils.isBlank(key)) {
-            throw BizException.validFail("验证码key不能为空");
-        }
-        //setHeader(response, "arithmetic");
+    public void create(HttpServletResponse response) throws IOException {
+        long nextId = snowFlakeUtil.getNextId();
+        String key = String.valueOf(nextId);
+
         response.setContentType(MediaType.IMAGE_PNG_VALUE);
         response.setHeader(HttpHeaders.PRAGMA, "No-cache");
         response.setHeader(HttpHeaders.CACHE_CONTROL, "No-cache");
         response.setDateHeader(HttpHeaders.EXPIRES, 0L);
+        response.setHeader("Captcha-key", key);
 
         Captcha captcha = new ArithmeticCaptcha(115, 42);
         captcha.setCharType(2);

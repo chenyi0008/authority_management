@@ -14,6 +14,10 @@
     <dependencies>
         <dependency>
             <groupId>com.chen</groupId>
+            <artifactId>tools-snow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.chen</groupId>
             <artifactId>auth-entity</artifactId>
         </dependency>
         <dependency>

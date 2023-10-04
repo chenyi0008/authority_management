@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("pd_auth_role_org")
+@TableName("auth_role_org")
 @ApiModel(value = "RoleOrg", description = "角色组织关系")
 public class RoleOrg extends SuperEntity<Long> {
 
@@ -31,7 +31,7 @@ public class RoleOrg extends SuperEntity<Long> {
 
     /**
      * 角色ID
-     * #pd_auth_role
+     * #auth_role
      */
     @ApiModelProperty(value = "角色ID")
     @TableField("role_id")
@@ -39,7 +39,7 @@ public class RoleOrg extends SuperEntity<Long> {
 
     /**
      * 部门ID
-     * #pd_core_org
+     * #core_org
      */
     @ApiModelProperty(value = "部门ID")
     @TableField("org_id")

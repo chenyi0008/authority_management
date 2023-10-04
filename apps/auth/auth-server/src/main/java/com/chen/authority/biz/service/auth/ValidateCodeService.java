@@ -8,11 +8,10 @@ import java.io.IOException;
 public interface ValidateCodeService {
     /**
      * 生成验证码
-     * @param key      验证码 uuid
      * @param response HttpServletResponse
      * @throws IOException
      */
-    void create(String key, HttpServletResponse response) throws IOException;
+    void create(HttpServletResponse response) throws IOException;
     /**
      * 校验验证码
      * @param key   前端上送 key

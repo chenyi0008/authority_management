@@ -27,7 +27,7 @@ import static com.baomidou.mybatisplus.annotation.SqlCondition.LIKE;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("pd_auth_resource")
+@TableName("auth_resource")
 @ApiModel(value = "Resource", description = "资源")
 public class Resource extends Entity<Long> {
 
@@ -56,7 +56,7 @@ public class Resource extends Entity<Long> {
 
     /**
      * 菜单ID
-     * #pd_auth_menu
+     * #auth_menu
      */
     @ApiModelProperty(value = "菜单ID")
     @TableField("menu_id")
@@ -71,12 +71,12 @@ public class Resource extends Entity<Long> {
     private String describe;
 
     @ApiModelProperty(value = "请求方式")
-    //@Length(max = 255, message = "接口描述长度不能超过255")
+    @Length(max = 255, message = "method长度不能超过255")
     @TableField(value = "method")
     private String method;
 
     @ApiModelProperty(value = "请求url地址")
-    //@Length(max = 255, message = "接口描述长度不能超过255")
+    @Length(max = 255, message = "url长度不能超过255")
     @TableField(value = "url")
     private String url;
 

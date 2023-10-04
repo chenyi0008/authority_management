@@ -4,7 +4,7 @@
 
     <select id="findUserByRoleId" resultMap="BaseResultMap" parameterType="map">
         SELECT u.id as id, account, name, mobile, sex
-        FROM pd_auth_user u INNER JOIN pd_auth_user_role ur on u.id = ur.user_id
+        FROM auth_user u INNER JOIN auth_user_role ur on u.id = ur.user_id
         where ur.role_id = #{roleId, jdbcType=BIGINT}
         <if test="keyword != null and keyword != ''">
             and (u.account like #{keyword, typeHandler=fullLike} or u.`name` like #{keyword, typeHandler=fullLike})
@@ -13,15 +13,15 @@
 
 
     <update id="incrPasswordErrorNumById">
-        update pd_auth_user set password_error_num = password_error_num + 1, password_error_last_time = SYSDATE()
+        update auth_user set password_error_num = password_error_num + 1, password_error_last_time = SYSDATE()
         where id = #{id, jdbcType=BIGINT}
     </update>
     <update id="resetPassErrorNum">
-        update pd_auth_user set password_error_num = 0, password_error_last_time = SYSDATE()
+        update auth_user set password_error_num = 0, password_error_last_time = SYSDATE()
         where id = #{id, jdbcType=BIGINT}
     </update>
     <update id="updateLastLoginTime">
-        update pd_auth_user set last_login_time = #{now, jdbcType=TIMESTAMP}
+        update auth_user set last_login_time = #{now, jdbcType=TIMESTAMP}
         where account = #{account, jdbcType=BIGINT}
     </update>
 
@@ -29,6 +29,6 @@
     <select id="findPage" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM pd_auth_user s ${ew.customSqlSegment}
+        FROM pauth_user s ${ew.customSqlSegment}
     </select>
 </mapper>

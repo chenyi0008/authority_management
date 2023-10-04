@@ -20,6 +20,11 @@
         <dependencies>
             <dependency>
                 <groupId>com.chen</groupId>
+                <artifactId>tools-snow</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.chen</groupId>
                 <artifactId>auth-entity</artifactId>
                 <version>${project.version}</version>
             </dependency>

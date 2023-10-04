@@ -21,26 +21,34 @@ public class VueRouter implements ITreeNode<VueRouter, Long>, Serializable {
 
     @JsonIgnore
     private Long id;
+
     @JsonIgnore
     private Long parentId;
 
     @ApiModelProperty(value = "路径")
     private String path;
+
     @ApiModelProperty(value = "菜单名称")
     private String name;
+
     //    @ApiModelProperty(value = "功能描述")
-//    private String describe;
+    //    private String describe;
+
     @ApiModelProperty(value = "组件")
     private String component;
+
     @ApiModelProperty(value = "重定向")
     private String redirect;
 
     @ApiModelProperty(value = "元数据")
     private RouterMeta meta;
+
     @ApiModelProperty(value = "是否隐藏")
     private Boolean hidden = false;
+
     @ApiModelProperty(value = "总是显示")
     private Boolean alwaysShow = false;
+
     @ApiModelProperty(value = "子路由")
     private List<VueRouter> children;
 

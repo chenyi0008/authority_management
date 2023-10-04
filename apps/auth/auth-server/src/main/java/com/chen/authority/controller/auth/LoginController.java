@@ -31,10 +31,10 @@ public class LoginController extends BaseController{
 
     //为前端系统生成验证码
     @GetMapping(value = "/captcha",produces = "image/png")
-    @ApiOperation(notes = "验证码",value = "验证码")
+    @ApiOperation(notes = "验证码 返回的Captcha-key在响应头",value = "验证码")
     @SysLog("生成验证码")
-    public void captcha(@RequestParam(value = "key") String key, HttpServletResponse response) throws IOException{
-        validateCodeService.create(key,response);
+    public void captcha(HttpServletResponse response) throws IOException{
+        validateCodeService.create(response);
     }
 
     //登录认证

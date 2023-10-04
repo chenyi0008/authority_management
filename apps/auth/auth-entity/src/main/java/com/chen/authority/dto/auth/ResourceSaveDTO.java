@@ -47,7 +47,7 @@ public class ResourceSaveDTO implements Serializable {
     private String name;
     /**
      * 菜单ID
-     * #pd_auth_menu
+     * #auth_menu
      */
     @ApiModelProperty(value = "菜单ID")
     private Long menuId;

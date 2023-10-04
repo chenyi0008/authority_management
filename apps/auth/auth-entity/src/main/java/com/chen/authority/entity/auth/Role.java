@@ -27,7 +27,7 @@ import static com.baomidou.mybatisplus.annotation.SqlCondition.LIKE;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("pd_auth_role")
+@TableName("auth_role")
 @ApiModel(value = "Role", description = "角色")
 public class Role extends Entity<Long> {
 
@@ -66,20 +66,11 @@ public class Role extends Entity<Long> {
     private Boolean status;
 
     /**
-     * 是否内置角色
+     * 是否内置角色 如：超级管理员 就是 内置角色
      */
     @ApiModelProperty(value = "是否内置角色")
     @TableField("readonly")
     private Boolean readonly;
-
-    /**
-     * 数据权限类型
-     * #DataScopeType{ALL:1,全部;THIS_LEVEL:2,本级;THIS_LEVEL_CHILDREN:3,本级以及子级;CUSTOMIZE:4,自定义;SELF:5,个人;}
-     */
-    /*@ApiModelProperty(value = "数据权限类型")
-    @NotNull(message = "数据权限类型不能为空")
-    @TableField("ds_type")
-    private DataScopeType dsType;*/
 
 
     @Builder

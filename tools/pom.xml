@@ -25,6 +25,7 @@
         <module>tools-dozer</module>
         <module>tools-xss</module>
         <module>tools-swagger2</module>
+        <module>tools-snow</module>
     </modules>
 
     <dependencyManagement>

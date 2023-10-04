@@ -34,6 +34,7 @@ public class MenuUpdateDTO implements Serializable {
     @NotNull(message = "id不能为空", groups = SuperEntity.Update.class)
     private Long id;
 
+
     /**
      * 菜单名称
      */
@@ -41,12 +42,16 @@ public class MenuUpdateDTO implements Serializable {
     @NotEmpty(message = "菜单名称不能为空")
     @Length(max = 20, message = "菜单名称长度不能超过20")
     private String name;
+
+
     /**
      * 功能描述
      */
     @ApiModelProperty(value = "功能描述")
     @Length(max = 200, message = "功能描述长度不能超过200")
     private String describe;
+
+
     /**
      * 是否公开菜单
      * 就是无需分配就可以访问的。所有人可见

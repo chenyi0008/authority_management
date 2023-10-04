@@ -30,20 +30,20 @@ public class RoleAuthoritySaveDTO implements Serializable {
 
     /**
      * 菜单ID
-     * #pd_auth_menu
+     * #auth_menu
      */
     @ApiModelProperty(value = "资源ID")
     private List<Long> menuIdList;
 
     /**
      * 资源id
-     * #pd_auth_resource
+     * #auth_resource
      */
     private List<Long> resourceIdList;
 
     /**
      * 角色id
-     * #pd_auth_role
+     * #auth_role
      */
     @ApiModelProperty(value = "角色id")
     @NotNull(message = "角色id不能为空")

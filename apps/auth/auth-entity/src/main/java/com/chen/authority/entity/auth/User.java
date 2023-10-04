@@ -28,7 +28,7 @@ import static com.baomidou.mybatisplus.annotation.SqlCondition.LIKE;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("pd_auth_user")
+@TableName("auth_user")
 @ApiModel(value = "User", description = "用户")
 public class User extends Entity<Long> {
 
@@ -54,7 +54,7 @@ public class User extends Entity<Long> {
 
     /**
      * 组织ID
-     * #pd_core_org
+     * #core_org
      */
     @ApiModelProperty(value = "组织ID")
     @TableField("org_id")
@@ -62,7 +62,7 @@ public class User extends Entity<Long> {
 
     /**
      * 岗位ID
-     * #pd_core_station
+     * #core_station
      */
     @ApiModelProperty(value = "岗位ID")
     @TableField("station_id")

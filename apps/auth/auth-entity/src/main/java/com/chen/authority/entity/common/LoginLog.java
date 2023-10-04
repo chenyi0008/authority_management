@@ -27,7 +27,7 @@ import static com.baomidou.mybatisplus.annotation.SqlCondition.LIKE;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("pd_common_login_log")
+@TableName("common_login_log")
 @ApiModel(value = "LoginLog", description = "登录日志")
 public class LoginLog extends SuperEntity<Long> {
 
