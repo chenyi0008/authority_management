@@ -3,7 +3,7 @@
 <mapper namespace="com.chen.authority.biz.dao.auth.MenuMapper">
     <!-- 通用查询结果列 -->
     <sql id="V_Column_List">
-        id,  name, path, component, is_enable, sort_value, icon, group_, parent_id
+        id, name, path, component, is_enable, sort_value, icon, group_, parent_id
     </sql>
 
     <select id="findVisibleMenu" parameterType="map"
@@ -11,20 +11,20 @@
         SELECT
         <include refid="V_Column_List"/>
         from (
-        SELECT
-        <include refid="V_Column_List"/>
-        from auth_menu where is_enable = true and is_public = true
-        UNION ALL
-        SELECT
-        <include refid="V_Column_List"/>
-        from auth_menu where is_enable = true and is_public = false
-        and id in (
-        SELECT distinct authority_id FROM auth_role_authority ra
-        INNER JOIN auth_user_role ur on ra.role_id = ur.role_id
-        INNER JOIN auth_role r on r.id = ra.role_id
-        where ur.user_id = #{userId, jdbcType=BIGINT} and r.status = true
-        and ra.authority_type = 'MENU'
-        )
+            SELECT
+            <include refid="V_Column_List"/>
+            from auth_menu where is_enable = true and is_public = true
+            UNION ALL
+            SELECT
+            <include refid="V_Column_List"/>
+            from auth_menu where is_enable = true and is_public = false
+            and id in (
+                SELECT distinct authority_id FROM auth_role_authority ra
+                INNER JOIN auth_user_role ur on ra.role_id = ur.role_id
+                INNER JOIN auth_role r on r.id = ra.role_id
+                where ur.user_id = #{userId, jdbcType=BIGINT} and r.status = true
+                and ra.authority_type = 'MENU'
+            )
         ) tmp ORDER BY sort_value asc
     </select>
 

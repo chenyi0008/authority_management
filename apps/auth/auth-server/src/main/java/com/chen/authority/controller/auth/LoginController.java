@@ -1,5 +1,6 @@
 package com.chen.authority.controller.auth;
 
+import cn.hutool.http.HttpResponse;
 import com.chen.authority.biz.service.auth.ValidateCodeService;
 import com.chen.authority.biz.service.auth.impl.AuthManager;
 import com.chen.authority.dto.auth.LoginDTO;
@@ -42,22 +43,22 @@ public class LoginController extends BaseController{
     @ApiOperation(notes = "登录",value = "登录")
     @SysLog("登录")
     public R<LoginDTO> login(@Validated @RequestBody LoginParamDTO loginParamDTO){
-        //校验验证码是否正确
-        boolean check = validateCodeService.check(loginParamDTO.getKey(), loginParamDTO.getCode());
-        if(check){
-            //验证码校验通过，执行具体的登录认证逻辑
+//        //校验验证码是否正确
+//        boolean check = validateCodeService.check(loginParamDTO.getKey(), loginParamDTO.getCode());
+//        if(check){
+//            //验证码校验通过，执行具体的登录认证逻辑
             R<LoginDTO> r = authManager.login(loginParamDTO.getAccount(),loginParamDTO.getPassword());
             return r;
-        }
+//        }
         //验证码校验不通过，直接返回
-        return this.success(null);
+//        return this.success(null);
     }
 
-    //校验验证码
-    @PostMapping("/check")
-    @ApiOperation(notes = "校验验证码",value = "校验验证码")
-    public boolean check(@RequestBody LoginParamDTO loginParamDTO){
-        //校验验证码是否正确
-        return validateCodeService.check(loginParamDTO.getKey(),loginParamDTO.getCode());
-    }
+//    //校验验证码
+//    @PostMapping("/check")
+//    @ApiOperation(notes = "校验验证码",value = "校验验证码")
+//    public boolean check(@RequestBody LoginParamDTO loginParamDTO){
+//        //校验验证码是否正确
+//        return validateCodeService.check(loginParamDTO.getKey(),loginParamDTO.getCode());
+//    }
 }

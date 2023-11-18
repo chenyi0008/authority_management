@@ -32,17 +32,12 @@ public class TreeUtil {
         for (T parent : treeNodes) {
             Serializable id = parent.getId();
             for (T children : treeNodes) {
-                if (parent != children) {
-                    //parent != children 这个来判断自己的孩子不允许是自己，因为有时候，根节点的parent会被设置成为自己
+                if (parent != children) {  //parent != children 这个来判断自己的孩子不允许是自己，因为有时候，根节点的parent会被设置成为自己
                     if (id.equals(children.getParentId())) {
-//                        if (parent.getChildren() == null) {
-//                            parent.setChildren(new ArrayList<T>());
-//                        }
                         parent.initChildren();
                         parent.getChildren().add(children);
                     }
                 } else if (id.equals(parent.getParentId())) {
-
                     selfIdEqSelfParent.add(id);
                 }
             }
