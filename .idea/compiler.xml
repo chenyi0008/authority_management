@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="tools-common" />
         <module name="auth-entity" />
+        <module name="campus" />
         <module name="auth-server" />
         <module name="tools-xss" />
         <module name="tools-core" />
@@ -33,6 +34,7 @@
       <module name="auth" options="-parameters" />
       <module name="auth-entity" options="-parameters" />
       <module name="auth-server" options="-parameters" />
+      <module name="campus" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="parent" options="-parameters" />
       <module name="server" options="-parameters" />
