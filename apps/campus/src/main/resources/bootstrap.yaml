@@ -1,0 +1,31 @@
+chen:
+  # docker部署时，需要指定， 表示运行该服务的宿主机IP
+#  local-ip: ${LOCAL_IP:${spring.cloud.client.ip-address}}
+  nacos:
+    ip: @pom.nacos.ip@
+    port: @pom.nacos.port@
+    namespace: @pom.nacos.namespace@
+
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: campus
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: ${chen.nacos.ip}:${chen.nacos.port}
+        file-extension: yml
+        namespace: ${chen.nacos.namespace}
+        shared-dataids: common.yml,redis.yml,mysql.yml
+        refreshable-dataids: common.yml
+        enabled: true
+      discovery:
+        server-addr: 101.35.238.12:8848
+        namespace: 00067e6b-f8f4-4734-8a4a-8e642fdc6d03
+        metadata:
+          management.context-path: ${server.servlet.context-path:}${spring.mvc.servlet.path:}${management.endpoints.web.base-path:}
+

@@ -86,7 +86,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public boolean reset(List<Long> ids) {
         LocalDateTime passwordExpireTime = null;
-        String defPassword = "cea87ef1cb2e47570020bf7c014e1074";//pinda123
+        String defPassword = "cea87ef1cb2e47570020bf7c014e1074";//chen123
         super.update(Wraps.<User>lbU()
                 .set(User::getPassword, defPassword)
                 .set(User::getPasswordErrorNum, 0L)
