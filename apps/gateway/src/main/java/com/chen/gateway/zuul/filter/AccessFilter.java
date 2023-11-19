@@ -88,21 +88,38 @@ public class AccessFilter extends BaseFilter {
 
         //第5步：如果包含当前的权限标识符，则从zuul header中取出用户id，根据用户id取出缓存中的用户拥有的权限，如果没有取到则通过Feign调用权限服务获取并放入缓存，判断用户拥有的权限是否包含当前请求的权限标识符
         String userId = RequestContext.getCurrentContext().getZuulRequestHeaders().get(BaseContextConstants.JWT_KEY_USER_ID);
+
+//        log.warn("debug:cacheChannel{}", cacheChannel);
+//        log.warn("debug:cacheChannel.get(CacheKey.USER_RESOURCE, userId){}", cacheChannel.get("user_resource", "3"));
+//        log.warn("debug: USER_RESOURCE:{}  userId:{}", CacheKey.USER_RESOURCE, userId);
+//        log.warn("debug:cacheChannel.get(CacheKey.USER_RESOURCE, userId).getValue{}", cacheChannel.get(CacheKey.USER_RESOURCE, userId).getValue());
+
         List<String> visibleResource = (List<String>) cacheChannel.get(CacheKey.USER_RESOURCE, userId).getValue();
         if(visibleResource == null){
             //缓存中不存在，需要通过接口远程调用权限服务来获取
             ResourceQueryDTO resourceQueryDTO = ResourceQueryDTO.builder().userId(new Long(userId)).build();
+
+//            log.warn("resourceApi:{}", resourceApi);
+//            log.warn("resourceQueryDTO:{}", resourceQueryDTO.toString());
+//            log.warn("resourceApi.visible(resourceQueryDTO):{}", resourceApi.visible(resourceQueryDTO));
+//            log.warn("resourceApi.visible(resourceQueryDTO).getData():{}", resourceApi.visible(resourceQueryDTO).getData());
+
+
             List<Resource> resourceList = resourceApi.visible(resourceQueryDTO).getData();
+
             if(resourceList != null && resourceList.size() > 0){
                 visibleResource = resourceList.stream().map((resource -> {
                     return resource.getMethod() + resource.getUrl();
                 })).collect(Collectors.toList());
                 //将当前用户拥有的权限载入缓存
                 cacheChannel.set(CacheKey.USER_RESOURCE,userId,visibleResource);
+            }else{
+                errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),200);
             }
         }
 
         //第6步：如果用户拥有的权限包含当前请求的权限标识符则说明当前用户拥有权限，直接放行
+
         count = visibleResource.stream().filter((resource) -> {
             return permission.startsWith(resource);
         }).count();

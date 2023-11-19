@@ -4,7 +4,9 @@ import com.chen.authority.dto.auth.ResourceQueryDTO;
 import com.chen.authority.entity.auth.Resource;
 import com.chen.base.R;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
@@ -21,5 +23,5 @@ public interface ResourceApi {
 
     //查询当前登录用户拥有的资源权限
     @GetMapping("/resource")
-    public R<List<Resource>> visible(ResourceQueryDTO resource);
+    public R<List<Resource>> visible(@SpringQueryMap ResourceQueryDTO resource);
 }

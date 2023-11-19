@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 /**
  * 用户操作API
  */
-@FeignClient(name = "${pinda.feign.authority-server:pinda-auth-server}", fallbackFactory = UserResolveApiFallback.class)
+@FeignClient(name = "${feign.authority-server:auth-server}", fallbackFactory = UserResolveApiFallback.class)
 public interface UserResolveApi {
     /**
      * 根据id 查询用户详情

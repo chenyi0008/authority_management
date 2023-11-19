@@ -9,6 +9,7 @@ import com.chen.exception.BizException;
 import com.chen.utils.StrHelper;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  * 当前过滤器负责解析请求头中的jwt令牌并且将解析出的用户信息放入zuul的header中
  */
 @Component
+@Slf4j
 public class TokenContextFilter extends BaseFilter {
     @Autowired
     private AuthClientProperties authClientProperties;
@@ -55,8 +57,8 @@ public class TokenContextFilter extends BaseFilter {
         HttpServletRequest request = ctx.getRequest();
 
         //从请求头中获取前端提交的jwt令牌
-        String userToken = request.getHeader(authClientProperties.getUser().getHeaderName());
-
+//        String userToken = request.getHeader(authClientProperties.getUser().getHeaderName());
+        String userToken = request.getHeader("Authorization");
         JwtUserInfo userInfo = null;
         //解析jwt令牌
         try {
@@ -69,6 +71,8 @@ public class TokenContextFilter extends BaseFilter {
             return null;
         }
 
+
+//        System.out.println("jwt user id:" + userInfo.getUserId());
         //将信息放入header
         if (userInfo != null) {
             addHeader(ctx, BaseContextConstants.JWT_KEY_ACCOUNT,
