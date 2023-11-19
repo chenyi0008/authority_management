@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class DatabaseProperties {
-    public static final String PREFIX = "pinda.database";
+    public static final String PREFIX = "chen.database";
     /**
      * 攻击 SQL 阻断解析器
      */
@@ -38,5 +38,5 @@ public class DatabaseProperties {
     /**
      * 事务扫描基础包
      */
-    private String transactionScanPackage = "com.itheima.pinda";
+    private String transactionScanPackage = "com.chen";
 }

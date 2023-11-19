@@ -115,6 +115,7 @@ public class AccessFilter extends BaseFilter {
                 cacheChannel.set(CacheKey.USER_RESOURCE,userId,visibleResource);
             }else{
                 errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),200);
+                return null;
             }
         }
 
