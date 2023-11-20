@@ -1,5 +1,6 @@
 package com.chen.campus.entity;
 
+import com.chen.base.entity.Entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -16,11 +17,8 @@ import java.io.Serializable;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = false)
 @Builder
-@ApiModel(value = "StuRegisterDTO", description = "学生注册DTO")
-public class Stu implements Serializable {
-
-
-    private Long id;
+@ApiModel(value = "Stu", description = "学生类")
+public class Stu extends Entity<Long> {
 
     /**
      * 姓名
