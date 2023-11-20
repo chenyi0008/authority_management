@@ -20,9 +20,10 @@ public interface StuDao {
 
 
     @Select("SELECT " +
-            "au.id, au.name, cs.school, cs.number, cs.id_card_number " +
+            "au.id, au.account, au.name, au.mobile, " +
+            "cs.school, cs.number, cs.id_card_number " +
             "FROM auth_user au " +
-            "JOIN campus_stu cs ON au.id = cs.id")
+            "LEFT JOIN campus_stu cs ON au.id = cs.id ")
     public List<Stu> selectAllUsersAndStu();
 
     @Update({

@@ -40,7 +40,7 @@ public class CodeGenerator {
 
         //策略设置
         StrategyConfig strategyConfig = new StrategyConfig();
-//        strategyConfig.setInclude("campus_dormitory");  //设置当前参与生成的表名，参数为可变参数
+        strategyConfig.setInclude("campus_lesson");  //设置当前参与生成的表名，参数为可变参数
 
         strategyConfig.setTablePrefix("campus_");  //设置数据库表的前缀名称，模块名 = 数据库表名 - 前缀名  例如： User = tbl_user - tbl_
         strategyConfig.setRestControllerStyle(true);    //设置是否启用Rest风格
