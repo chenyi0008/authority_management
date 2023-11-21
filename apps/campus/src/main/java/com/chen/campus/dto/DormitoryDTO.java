@@ -17,11 +17,11 @@ import javax.validation.constraints.NotEmpty;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = false)
 @Builder
-@ApiModel(value = "DormitoryDto", description = "学生宿舍DTO")
-public class DormitoryDto {
+@ApiModel(value = "DormitoryDTO", description = "学生宿舍DTO")
+public class DormitoryDTO {
 
     @ApiModelProperty(value = "id")
-    @Min(value = 0L, message = "id无效")
+    @Min(value = 1L, message = "id无效")
     private long id;
 
     /**

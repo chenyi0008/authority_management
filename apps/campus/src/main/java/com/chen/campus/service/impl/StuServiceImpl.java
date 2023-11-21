@@ -29,5 +29,10 @@ public class StuServiceImpl implements IStuService {
         return stuDao.updateUserAndStu(stu);
     }
 
+    @Override
+    public Integer campusCardRecharge(Long id, double money) {
+        return stuDao.campusCardRecharge(id, money);
+    }
+
 
 }

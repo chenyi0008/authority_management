@@ -1,7 +1,7 @@
 package com.chen.campus.service.impl;
 
 import com.baomidou.mybatisplus.extension.conditions.update.LambdaUpdateChainWrapper;
-import com.chen.campus.dto.DormitoryDto;
+import com.chen.campus.dto.DormitoryDTO;
 import com.chen.campus.entity.Dormitory;
 import com.chen.campus.dao.DormitoryDao;
 import com.chen.campus.service.IDormitoryService;
@@ -30,7 +30,7 @@ public class DormitoryServiceImpl extends ServiceImpl<DormitoryDao, Dormitory> i
     }
 
     @Override
-    public Boolean updateDormitory(DormitoryDto dto) {
+    public Boolean updateDormitory(DormitoryDTO dto) {
         LambdaUpdateChainWrapper<Dormitory> lcw = new LambdaUpdateChainWrapper<>(dormitoryDao);
         boolean flag = lcw.eq(Dormitory::getId, dto.getId())
                 .set(Dormitory::getAddress, dto.getAddress())
@@ -39,6 +39,11 @@ public class DormitoryServiceImpl extends ServiceImpl<DormitoryDao, Dormitory> i
         return flag;
     }
 
+    @Override
+    public Integer bindStuToDormitory(Long stuId, Long dormitoryId) {
+        Integer integer = dormitoryDao.bingStuToDormitory(stuId, dormitoryId);
+        return integer;
+    }
 
 
 }

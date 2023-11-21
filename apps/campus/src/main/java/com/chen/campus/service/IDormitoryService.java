@@ -1,6 +1,6 @@
 package com.chen.campus.service;
 
-import com.chen.campus.dto.DormitoryDto;
+import com.chen.campus.dto.DormitoryDTO;
 import com.chen.campus.entity.Dormitory;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -16,5 +16,7 @@ public interface IDormitoryService extends IService<Dormitory> {
 
     public Integer chargeFee(Long id ,double money);
 
-    public Boolean updateDormitory(DormitoryDto dto);
+    public Boolean updateDormitory(DormitoryDTO dto);
+
+    public Integer bindStuToDormitory(Long stuId, Long dormitoryId);
 }

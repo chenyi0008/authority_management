@@ -12,7 +12,7 @@ public interface StuDao {
 
     @Select("SELECT " +
             "au.id, au.account, au.name, au.mobile, " +
-            "cs.school, cs.number, cs.id_card_number " +
+            "cs.school, cs.number, cs.id_card_number, cs.dormitory_id " +
             "FROM auth_user au " +
             "LEFT JOIN campus_stu cs ON au.id = cs.id " +
             "WHERE au.id = #{id}")
@@ -21,7 +21,7 @@ public interface StuDao {
 
     @Select("SELECT " +
             "au.id, au.account, au.name, au.mobile, " +
-            "cs.school, cs.number, cs.id_card_number " +
+            "cs.school, cs.number, cs.id_card_number, cs.dormitory_id " +
             "FROM auth_user au " +
             "LEFT JOIN campus_stu cs ON au.id = cs.id ")
     public List<Stu> selectAllUsersAndStu();
@@ -29,7 +29,6 @@ public interface StuDao {
     @Update({
             "UPDATE auth_user " +
                     "SET " +
-                    "account = #{account}, " +
                     "name = #{name}, " +
                     "mobile = #{mobile} " +
                     "WHERE id = #{id};",
@@ -42,6 +41,9 @@ public interface StuDao {
                     "WHERE id = #{id};"
     })
     public Integer updateUserAndStu(Stu stu);
+
+    @Update("UPDATE campus_stu SET balance = balance + #{money} WHERE id = #{id}")
+    public Integer campusCardRecharge(@Param("id") Long id, @Param("money") double money);
 
 
 

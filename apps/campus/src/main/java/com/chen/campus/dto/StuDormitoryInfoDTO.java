@@ -1,6 +1,6 @@
-package com.chen.campus.entity;
+package com.chen.campus.dto;
 
-import com.chen.base.entity.Entity;
+import com.chen.campus.entity.Dormitory;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -8,7 +8,6 @@ import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
@@ -17,8 +16,10 @@ import java.io.Serializable;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = false)
 @Builder
-@ApiModel(value = "Stu", description = "学生类")
-public class Stu extends Entity<Long> {
+@ApiModel(value = "StuDormitoryInfoDTO", description = "学生信息DTO")
+public class StuDormitoryInfoDTO {
+
+    private Long id;
 
     /**
      * 姓名
@@ -53,37 +54,12 @@ public class Stu extends Entity<Long> {
     private String idCardNumber;
 
     /**
-     * 密码
+     * 手机
      */
-    @ApiModelProperty(value = "密码")
-    @NotEmpty(message = "密码不能为空")
-    @Length(max = 64, message = "密码长度不能超过64")
-    private String password;
-
-    /**
-     * 账号
-     */
-    @ApiModelProperty(value = "账号")
-    @NotEmpty(message = "账号不能为空")
-    @Length(max = 30, message = "账号长度不能超过30")
-    private String account;
-
-    /**
-     * 手机号码
-     */
-    @ApiModelProperty(value = "手机号码")
+    @ApiModelProperty(value = "手机")
     @Length(max = 20, message = "手机长度不能超过20")
     private String mobile;
 
-    /**
-     * 宿舍id
-     */
-    @ApiModelProperty(value = "宿舍id")
-    private Long dormitoryId;
+    private Dormitory dormitory;
 
-    /**
-     * 校园卡余额
-     */
-    @ApiModelProperty(value = "校园卡余额")
-    private double balance;
 }

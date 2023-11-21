@@ -22,4 +22,9 @@ public interface DormitoryDao extends BaseMapper<Dormitory> {
     @Update("UPDATE campus_dormitory SET electricity_cost = electricity_cost + #{money} WHERE id = #{id}")
     public Integer chargeFee(Long id, double money);
 
+    @Update("UPDATE campus_stu SET dormitory_id = #{dormitoryId} WHERE id = #{stuId}")
+    public Integer bingStuToDormitory(Long stuId, Long dormitoryId);
+
+
+
 }

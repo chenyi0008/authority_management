@@ -12,4 +12,6 @@ public interface IStuService {
 
     public Integer updateStu(Stu stu);
 
+    public Integer campusCardRecharge(Long id, double balance);
+
 }

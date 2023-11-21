@@ -55,22 +55,6 @@ public class StuDTO implements Serializable {
     private String idCardNumber;
 
     /**
-     * 密码
-     */
-    @ApiModelProperty(value = "密码")
-    @NotEmpty(message = "密码不能为空")
-    @Length(max = 64, message = "密码长度不能超过64")
-    private String password;
-
-    /**
-     * 账号
-     */
-    @ApiModelProperty(value = "账号")
-    @NotEmpty(message = "账号不能为空")
-    @Length(max = 30, message = "账号长度不能超过30")
-    private String account;
-
-    /**
      * 手机
      */
     @ApiModelProperty(value = "手机")

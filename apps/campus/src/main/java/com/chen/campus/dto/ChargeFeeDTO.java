@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.*;
 
@@ -16,14 +15,14 @@ import javax.validation.constraints.*;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = false)
 @Builder
-@ApiModel(value = "ChargeFeeDto", description = "充值电费DTO")
-public class ChargeFeeDto {
+@ApiModel(value = "ChargeFeeDTO", description = "充值电费DTO")
+public class ChargeFeeDTO {
 
     /**
      * 宿舍id
      */
     @ApiModelProperty(value = "宿舍id")
-    @Min(value = 0L, message = "宿舍id不能为0")
+    @Min(value = 1L, message = "宿舍id不能为0")
     private long id;
 
     /**
