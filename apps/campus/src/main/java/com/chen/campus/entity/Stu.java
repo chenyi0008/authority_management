@@ -86,4 +86,29 @@ public class Stu extends Entity<Long> {
      */
     @ApiModelProperty(value = "校园卡余额")
     private double balance;
+
+    /**
+     * 是否通过四级
+     */
+    @ApiModelProperty(value = "是否通过四级")
+    private Boolean cet4;
+
+    /**
+     * 是否通过六级
+     */
+    @ApiModelProperty(value = "是否通过六级")
+    private Boolean cet6;
+
+    /**
+     * 学分是否符合毕业要求
+     */
+    @ApiModelProperty(value = "学分是否符合毕业要求")
+    private Boolean credit;
+
+    /**
+     * 是否退宿
+     */
+    @ApiModelProperty(value = "是否退宿")
+    private Boolean checkOut;
+
 }

@@ -1,5 +1,6 @@
 package com.chen.campus.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chen.campus.dao.StuDao;
 import com.chen.campus.entity.Stu;
 import com.chen.campus.service.IStuService;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StuServiceImpl implements IStuService {
+public class StuServiceImpl implements IStuService  {
 
     @Autowired
     private StuDao stuDao;
