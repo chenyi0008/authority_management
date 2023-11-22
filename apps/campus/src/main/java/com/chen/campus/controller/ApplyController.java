@@ -3,9 +3,11 @@ package com.chen.campus.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
+import com.baomidou.mybatisplus.extension.conditions.update.LambdaUpdateChainWrapper;
 import com.chen.base.R;
 import com.chen.campus.dto.ApplyDTO;
 import com.chen.campus.dto.ApplyStuDTO;
+import com.chen.campus.dto.ExamineAndApproveDTO;
 import com.chen.campus.entity.Apply;
 import com.chen.campus.entity.Stu;
 import com.chen.campus.service.IApplyService;
@@ -55,9 +57,20 @@ public class ApplyController {
         return R.success(dto);
     }
 
+    @GetMapping("/stu")
+    public R getByStuId(@RequestParam Long stuId){
+        List<Apply> list = applyService.getByStuId(stuId);
+        return R.success(list);
+    }
+
     @PutMapping
-    public R ExamineAndApprove(){
-        return null;
+    public R ExamineAndApprove(@RequestBody @Validated ExamineAndApproveDTO dto){
+        Boolean flag = applyService.examineAndApprove(dto.getApplyId(), dto.getStatus());
+        if(flag){
+            return R.success();
+        }else {
+            return R.fail("更新失败");
+        }
     }
 
 

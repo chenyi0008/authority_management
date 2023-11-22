@@ -1,5 +1,7 @@
 package com.chen.campus.service.impl;
 
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
+import com.baomidou.mybatisplus.extension.conditions.update.LambdaUpdateChainWrapper;
 import com.chen.campus.dao.StuDao;
 import com.chen.campus.dto.ApplyStuDTO;
 import com.chen.campus.entity.Apply;
@@ -79,5 +81,18 @@ public class ApplyServiceImpl extends ServiceImpl<ApplyDao, Apply> implements IA
         return dtoList;
     }
 
+    @Override
+    public Boolean examineAndApprove(Long id, String status) {
+        LambdaUpdateChainWrapper<Apply> wrapper = new LambdaUpdateChainWrapper<>(applyDao);
+        boolean update = wrapper.eq(Apply::getId, id).set(Apply::getStatus, status).update();
+        return update;
+    }
+
+    @Override
+    public List<Apply> getByStuId(Long stuId){
+        LambdaQueryChainWrapper<Apply> wrapper = new LambdaQueryChainWrapper<>(applyDao);
+        List<Apply> list = wrapper.eq(Apply::getStuId, stuId).list();
+        return list;
+    }
 
 }

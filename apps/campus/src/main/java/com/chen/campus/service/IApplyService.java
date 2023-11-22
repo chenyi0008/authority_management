@@ -18,4 +18,8 @@ public interface IApplyService extends IService<Apply> {
 
     public List<ApplyStuDTO> getApplyAndStu();
 
+    public Boolean examineAndApprove(Long id, String status);
+
+    public List<Apply> getByStuId(Long stuId);
+
 }
