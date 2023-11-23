@@ -49,6 +49,8 @@ public class AccessFilter extends BaseFilter {
     //鉴权处理逻辑
     @Override
     public Object run() throws ZuulException {
+        HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
+        log.warn("request url:{}", request.getRequestURI());
         //第1步：判断当前请求uri是否需要忽略
         if(isIgnoreToken()){
             //当前请求需要忽略，直接放行
@@ -56,7 +58,7 @@ public class AccessFilter extends BaseFilter {
         }
 
         //第2步：获取当前请求的请求方式和uri，拼接成GET/user/page这种形式，称为权限标识符
-        HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
+//        HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
         String method = request.getMethod();//GET POST PUT
         String uri = request.getRequestURI();
         uri = StrUtil.subSuf(uri,zuulPrefix.length());
