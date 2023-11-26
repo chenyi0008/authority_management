@@ -29,6 +29,7 @@ public abstract class BaseFilter extends ZuulFilter{
 
     //网关抛异常，不再进行路由，而是直接返回到前端
     protected void errorResponse(String errMsg,int errCode,int httpStatusCode){
+
         RequestContext ctx = RequestContext.getCurrentContext();
         //设置响应状态码
         ctx.setResponseStatusCode(httpStatusCode);

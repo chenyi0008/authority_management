@@ -56,21 +56,34 @@ public class RoleAuthorityServiceImpl extends ServiceImpl<RoleAuthorityMapper, R
         return true;
     }
 
+
+    /**
+     * 保存角色和资源/菜单的关联关系，支持同时关联多个资源和菜单。
+     *
+     * @param dto 包含角色ID、资源ID列表和菜单ID列表的数据传输对象
+     * @return 保存成功返回 true，否则返回 false
+     */
     @Override
     public boolean saveRoleAuthority(RoleAuthoritySaveDTO dto) {
-        //删除角色和资源的关联
+        // 删除角色和资源的关联关系
         super.remove(Wraps.<RoleAuthority>lbQ().eq(RoleAuthority::getRoleId, dto.getRoleId()));
 
         List<RoleAuthority> list = new ArrayList<>();
+
+        // 如果资源ID列表不为空，处理资源关联
         if (dto.getResourceIdList() != null && !dto.getResourceIdList().isEmpty()) {
+            // 获取与资源关联的菜单ID列表
             List<Long> menuIdList = resourceService.findMenuIdByResourceId(dto.getResourceIdList());
+
+            // 如果传入的菜单ID列表为空，将资源关联的菜单ID列表加入到传入的菜单ID列表中
             if (dto.getMenuIdList() == null || dto.getMenuIdList().isEmpty()) {
                 dto.setMenuIdList(menuIdList);
             } else {
+                // 否则，将资源关联的菜单ID列表添加到传入的菜单ID列表中
                 dto.getMenuIdList().addAll(menuIdList);
             }
 
-            //保存授予的资源
+            // 保存授予的资源
             List<RoleAuthority> resourceList = new HashSet<>(dto.getResourceIdList())
                     .stream()
                     .map((resourceId) -> RoleAuthority.builder()
@@ -81,8 +94,10 @@ public class RoleAuthorityServiceImpl extends ServiceImpl<RoleAuthorityMapper, R
                     .collect(Collectors.toList());
             list.addAll(resourceList);
         }
+
+        // 如果菜单ID列表不为空，处理菜单关联
         if (dto.getMenuIdList() != null && !dto.getMenuIdList().isEmpty()) {
-            //保存授予的菜单
+            // 保存授予的菜单
             List<RoleAuthority> menuList = new HashSet<>(dto.getMenuIdList())
                     .stream()
                     .map((menuId) -> RoleAuthority.builder()
@@ -93,9 +108,11 @@ public class RoleAuthorityServiceImpl extends ServiceImpl<RoleAuthorityMapper, R
                     .collect(Collectors.toList());
             list.addAll(menuList);
         }
+
+        // 批量保存关联关系
         super.saveBatch(list);
 
-        // 清理
+        // 清理与角色关联的用户的缓存
         List<Long> userIdList = userRoleService.listObjs(Wraps.<UserRole>lbQ().select(UserRole::getUserId).eq(UserRole::getRoleId, dto.getRoleId()),
                 (userId) -> NumberHelper.longValueOf0(userId));
         userIdList.stream().collect(Collectors.toSet()).forEach((userId) -> {
@@ -105,4 +122,5 @@ public class RoleAuthorityServiceImpl extends ServiceImpl<RoleAuthorityMapper, R
 
         return true;
     }
+
 }

@@ -56,7 +56,9 @@ public class AccessFilter extends BaseFilter {
             //当前请求需要忽略，直接放行
             return null;
         }
-
+//        if(true){
+//            return null;
+//        }
         //第2步：获取当前请求的请求方式和uri，拼接成GET/user/page这种形式，称为权限标识符
 //        HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
         String method = request.getMethod();//GET POST PUT
@@ -64,6 +66,7 @@ public class AccessFilter extends BaseFilter {
         uri = StrUtil.subSuf(uri,zuulPrefix.length());
         uri = StrUtil.subSuf(uri,uri.indexOf("/",1));
         String permission = method + uri;//GET/user/page
+        log.warn("METHOD/URL:{}", permission);
 
         //第3步：从缓存中获取所有需要进行鉴权的资源(同样是由资源表的method字段值+url字段值拼接成)，如果没有获取到则通过Feign调用权限服务获取并放入缓存中
         CacheObject cacheObject = cacheChannel.get(CacheKey.RESOURCE, CacheKey.RESOURCE_NEED_TO_CHECK);
@@ -84,6 +87,7 @@ public class AccessFilter extends BaseFilter {
 
         if(count == 0){
             //当前请求是一个未知请求，直接返回未授权异常信息
+            log.warn("当前请求是一个未知请求，直接返回未授权异常信息");
             errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),200);
             return null;
         }
@@ -91,12 +95,20 @@ public class AccessFilter extends BaseFilter {
         //第5步：如果包含当前的权限标识符，则从zuul header中取出用户id，根据用户id取出缓存中的用户拥有的权限，如果没有取到则通过Feign调用权限服务获取并放入缓存，判断用户拥有的权限是否包含当前请求的权限标识符
         String userId = RequestContext.getCurrentContext().getZuulRequestHeaders().get(BaseContextConstants.JWT_KEY_USER_ID);
 
-//        log.warn("debug:cacheChannel{}", cacheChannel);
-//        log.warn("debug:cacheChannel.get(CacheKey.USER_RESOURCE, userId){}", cacheChannel.get("user_resource", "3"));
-//        log.warn("debug: USER_RESOURCE:{}  userId:{}", CacheKey.USER_RESOURCE, userId);
-//        log.warn("debug:cacheChannel.get(CacheKey.USER_RESOURCE, userId).getValue{}", cacheChannel.get(CacheKey.USER_RESOURCE, userId).getValue());
+        log.warn("debug:cacheChannel{}", cacheChannel);
+        log.warn("debug:cacheChannel.get(CacheKey.USER_RESOURCE, userId){}", cacheChannel.get("user_resource", "3"));
+        log.warn("debug: USER_RESOURCE:{}  userId:{}", CacheKey.USER_RESOURCE, userId);
+        log.warn("debug:cacheChannel.get(CacheKey.USER_RESOURCE, userId).getValue{}", cacheChannel.get(CacheKey.USER_RESOURCE, userId).getValue());
+        CacheObject cache = cacheChannel.get(CacheKey.USER_RESOURCE, userId);
 
-        List<String> visibleResource = (List<String>) cacheChannel.get(CacheKey.USER_RESOURCE, userId).getValue();
+        if(cache == null){
+            log.warn("cache == null，直接返回未授权异常信息");
+            errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),200);
+            return null;
+        }
+
+        log.warn("cache!=null");
+        List<String> visibleResource = (List<String>) cache.getValue();
         if(visibleResource == null){
             //缓存中不存在，需要通过接口远程调用权限服务来获取
             ResourceQueryDTO resourceQueryDTO = ResourceQueryDTO.builder().userId(new Long(userId)).build();
@@ -122,15 +134,17 @@ public class AccessFilter extends BaseFilter {
         }
 
         //第6步：如果用户拥有的权限包含当前请求的权限标识符则说明当前用户拥有权限，直接放行
-
+        log.warn("第6步：如果用户拥有的权限包含当前请求的权限标识符则说明当前用户拥有权限，直接放行");
         count = visibleResource.stream().filter((resource) -> {
             return permission.startsWith(resource);
         }).count();
 
         if(count > 0){
             //当前用户拥有访问权限，直接放行
+            log.warn("当前用户拥有访问权限，直接放行");
             return null;
         }else{
+            log.warn("第7步：如果用户拥有的权限不包含当前请求的权限标识符则说明当前用户没有权限，返回未经授权错误提示");
             //第7步：如果用户拥有的权限不包含当前请求的权限标识符则说明当前用户没有权限，返回未经授权错误提示
             errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),200);
             return null;
