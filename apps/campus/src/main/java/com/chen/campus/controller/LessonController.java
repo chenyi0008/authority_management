@@ -29,10 +29,13 @@ public class LessonController {
     @Autowired
     ILessonService lessonService;
 
+    /**
+     * 获取课表
+     * @return
+     */
     @GetMapping
     public R getAllLesson(){
         List<Lesson> list = lessonService.list();
-//        DataStructMapUtils.transformLessonData()
         List<Map<String, Object>> maps = DataStructMapUtils.convertToDesiredStructure(list);
         return R.success(maps);
     }

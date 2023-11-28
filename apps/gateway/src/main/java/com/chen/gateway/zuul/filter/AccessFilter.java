@@ -120,7 +120,7 @@ public class AccessFilter extends BaseFilter {
 
 
             List<Resource> resourceList = resourceApi.visible(resourceQueryDTO).getData();
-
+            log.warn("通过feign获取到资源权限表：{}", resourceList.toString());
             if(resourceList != null && resourceList.size() > 0){
                 visibleResource = resourceList.stream().map((resource -> {
                     return resource.getMethod() + resource.getUrl();

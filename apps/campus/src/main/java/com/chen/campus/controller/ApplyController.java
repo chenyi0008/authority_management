@@ -40,6 +40,11 @@ public class ApplyController {
     private IStuService stuService;
 
 
+    /**
+     * 学生创建申请
+     * @param dto
+     * @return
+     */
     @PostMapping
     public R createApply(@RequestBody @Validated ApplyDTO dto) {
         Apply apply = dozerUtils.map(dto, Apply.class);
@@ -51,18 +56,32 @@ public class ApplyController {
         }
     }
 
+    /**
+     * 根据学生id获取此学生的所有请求
+     * @return
+     */
     @GetMapping
     public R getAll(){
         List<ApplyStuDTO> dto = applyService.getApplyAndStu();
         return R.success(dto);
     }
 
+    /**
+     * 获取所有学生信息
+     * @param stuId
+     * @return
+     */
     @GetMapping("/stu")
     public R getByStuId(@RequestParam Long stuId){
         List<Apply> list = applyService.getByStuId(stuId);
         return R.success(list);
     }
 
+    /**
+     * 管理员审核学生申请
+     * @param dto
+     * @return
+     */
     @PutMapping
     public R ExamineAndApprove(@RequestBody @Validated ExamineAndApproveDTO dto){
         Boolean flag = applyService.examineAndApprove(dto.getApplyId(), dto.getStatus());

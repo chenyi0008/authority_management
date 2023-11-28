@@ -30,12 +30,21 @@ public class StuController extends BaseController {
     @Autowired
     private IDormitoryService dormitoryService;
 
+    /**
+     * 获取所有学生信息
+     * @return
+     */
     @GetMapping
     public R<List<Stu>> getStuAll(){
         List<Stu> list = stuService.getAllStu();
         return R.success(list);
     }
 
+    /**
+     * 根据id获取学生信息（含绑定宿舍信息）
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}")
     public R<StuDormitoryInfoDTO> getStuById(@PathVariable Long id){
         Stu stu = stuService.getStuById(id);
@@ -50,6 +59,11 @@ public class StuController extends BaseController {
         return R.success(dto);
     }
 
+    /**
+     * 更新学生信息
+     * @param dto
+     * @return
+     */
     @PutMapping
     public R updateStu(@RequestBody @Validated StuDTO dto){
         Stu stu = dozerUtils.map(dto, Stu.class);
@@ -59,6 +73,11 @@ public class StuController extends BaseController {
     }
 
 
+    /**
+     * 充电费
+     * @param dto
+     * @return
+     */
     @PutMapping("/charge")
     public R campusCardRecharge(@RequestBody @Validated CampusCardRechargeDTO dto){
         log.warn(dto.toString());
