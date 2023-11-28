@@ -74,7 +74,7 @@ public class StuController extends BaseController {
 
 
     /**
-     * 充电费
+     * 校园卡充值
      * @param dto
      * @return
      */
