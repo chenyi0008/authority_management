@@ -48,7 +48,6 @@ public class LoginController extends BaseController{
     private UserRoleService userRoleService;
 
 
-
     //为前端系统生成验证码
     @GetMapping(value = "/captcha",produces = "image/png")
     @ApiOperation(notes = "验证码 返回的Captcha-key在响应头",value = "验证码")

@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
-//@FeignClient(name = "${pinda.feign.authority-server:pd-auth-server}",
-//        fallback = ResourceApiFallback.class)
 
-//在运行时，Spring 会将 ${pinda.feign.authority-server:auth-server} 替换为 pinda.feign.authority-server 配置属性的实际值。如果未定义该属性，它将使用默认值“auth-server”
 @FeignClient(name = "${feign.authority-server:auth-server}",
         fallback = ResourceApiFallback.class)
 public interface ResourceApi {

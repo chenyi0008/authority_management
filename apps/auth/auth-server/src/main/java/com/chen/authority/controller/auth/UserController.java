@@ -16,6 +16,7 @@ import com.chen.database.mybatis.conditions.Wraps;
 import com.chen.database.mybatis.conditions.query.LbqWrapper;
 import com.chen.dozer.DozerUtils;
 import com.chen.log.annotation.SysLog;
+import com.chen.user.annotation.LoginUser;
 import com.chen.user.feign.UserQuery;
 import com.chen.user.model.SysOrg;
 import com.chen.user.model.SysRole;
@@ -30,6 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -205,5 +207,25 @@ public class UserController extends BaseController {
         List<User> list = userService.findUserByRoleId(roleId, keyword);
         List<Long> idList = list.stream().mapToLong(User::getId).boxed().collect(Collectors.toList());
         return success(UserRoleDTO.builder().idList(idList).userList(list).build());
+    }
+
+    /**
+     * 单体查询用户角色以及基本信息
+     */
+    @ApiOperation(value = "单体查询用户角色以及基本信息", notes = "单体查询用户角色以及基本信息")
+    @GetMapping(value = "/userinfo")
+    public R<SysUser> getById(@LoginUser SysUser sys) {
+        log.info("userInfo:{}", sys.toString());
+        Long userid = sys.getId();
+
+        log.info("userid:{}", userid);
+        User user = userService.getById(userid);
+        if (user == null) {
+            return success(null);
+        }
+        SysUser sysUser = dozer.map(user, SysUser.class);
+        List<Role> list = roleService.findRoleByUserId(userid);
+        sysUser.setRoles(dozer.mapList(list, SysRole.class));
+        return success(sysUser);
     }
 }

@@ -72,7 +72,7 @@ public class TokenContextFilter extends BaseFilter {
         }
 
 
-//        System.out.println("jwt user id:" + userInfo.getUserId());
+        log.info("userInfo:{}", userInfo.toString());
         //将信息放入header
         if (userInfo != null) {
             addHeader(ctx, BaseContextConstants.JWT_KEY_ACCOUNT,

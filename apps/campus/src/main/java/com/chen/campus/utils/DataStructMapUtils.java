@@ -31,9 +31,15 @@ public class DataStructMapUtils {
         // Convert the intermediate map to the final list structure
         List<Map<String, Object>> result = new ArrayList<>();
         for (Map.Entry<String, Map<String, Map<String, Object>>> entry : convertedData.entrySet()) {
+
             Map<String, Object> dayMap = new HashMap<>();
             dayMap.put("day", entry.getKey());
-            dayMap.put("todayLessons", entry.getValue());
+//            dayMap.put("todayLessons", entry.getValue());
+            Map<String, Map<String, Object>> map = entry.getValue();
+            for (String s : map.keySet()) {
+                dayMap.put(s, map.get(s));
+            }
+
             result.add(dayMap);
         }
 

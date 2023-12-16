@@ -32,4 +32,7 @@ public class LoginDTO implements Serializable {
 
     @ApiModelProperty(value = "权限列表")
     private List<String> permissionsList;
+
+    @ApiModelProperty(value = "角色")
+    private String role;
 }

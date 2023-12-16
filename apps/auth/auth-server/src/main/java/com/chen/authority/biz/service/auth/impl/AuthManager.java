@@ -4,12 +4,14 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.chen.auth.server.utils.JwtTokenServerUtils;
 import com.chen.auth.utils.JwtUserInfo;
 import com.chen.auth.utils.Token;
+import com.chen.authority.biz.dao.auth.RoleMapper;
 import com.chen.authority.biz.service.auth.ResourceService;
 import com.chen.authority.biz.service.auth.UserService;
 import com.chen.authority.dto.auth.LoginDTO;
 import com.chen.authority.dto.auth.ResourceQueryDTO;
 import com.chen.authority.dto.auth.UserDTO;
 import com.chen.authority.entity.auth.Resource;
+import com.chen.authority.entity.auth.Role;
 import com.chen.authority.entity.auth.User;
 import com.chen.base.R;
 import com.chen.common.constant.CacheKey;
@@ -40,6 +42,8 @@ public class AuthManager {
     private ResourceService resourceService;
     @Autowired
     private CacheChannel cacheChannel;
+    @Autowired
+    private RoleMapper roleMapper;
 
     //登录认证
     public R<LoginDTO> login(String account, String password) {
@@ -70,12 +74,16 @@ public class AuthManager {
             //缓存权限数据
             cacheChannel.set(CacheKey.USER_RESOURCE,user.getId().toString(),visibleResource);
         }
+        List<Role> roleList = roleMapper.findRoleByUserId(user.getId());
+
+
 
         //封装返回结果
         LoginDTO loginDTO = LoginDTO.builder().
                             user(dozerUtils.map(userR.getData(), UserDTO.class)).
                             token(token).
                             permissionsList(permissionList).
+                            role(roleList.get(0).getName()).
                             build();
         return R.success(loginDTO);
         //return null;
@@ -95,6 +103,8 @@ public class AuthManager {
         //认证成功
         return R.success(user);
     }
+
+
 
     //为当前登录用户生成对应的jwt令牌
     public Token generateUserToken(User user){

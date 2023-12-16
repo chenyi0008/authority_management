@@ -12,7 +12,7 @@ public class BaseContextConstants {
     /**
      *
      */
-    public static final String JWT_KEY_USER_ID = "userid";
+        public static final String JWT_KEY_USER_ID = "userid";
     /**
      *
      */

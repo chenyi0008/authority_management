@@ -54,6 +54,7 @@ public class AccessFilter extends BaseFilter {
         //第1步：判断当前请求uri是否需要忽略
         if(isIgnoreToken()){
             //当前请求需要忽略，直接放行
+            log.warn("当前请求需要忽略，直接放行");
             return null;
         }
 //        if(true){
@@ -88,7 +89,7 @@ public class AccessFilter extends BaseFilter {
         if(count == 0){
             //当前请求是一个未知请求，直接返回未授权异常信息
             log.warn("当前请求是一个未知请求，直接返回未授权异常信息");
-            errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),200);
+            errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),401);
             return null;
         }
 
@@ -103,7 +104,7 @@ public class AccessFilter extends BaseFilter {
 
         if(cache == null){
             log.warn("cache == null，直接返回未授权异常信息");
-            errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),200);
+            errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),401);
             return null;
         }
 
@@ -128,7 +129,7 @@ public class AccessFilter extends BaseFilter {
                 //将当前用户拥有的权限载入缓存
                 cacheChannel.set(CacheKey.USER_RESOURCE,userId,visibleResource);
             }else{
-                errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),200);
+                errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),401);
                 return null;
             }
         }
@@ -146,7 +147,7 @@ public class AccessFilter extends BaseFilter {
         }else{
             log.warn("第7步：如果用户拥有的权限不包含当前请求的权限标识符则说明当前用户没有权限，返回未经授权错误提示");
             //第7步：如果用户拥有的权限不包含当前请求的权限标识符则说明当前用户没有权限，返回未经授权错误提示
-            errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),200);
+            errorResponse(ExceptionCode.UNAUTHORIZED.getMsg(),ExceptionCode.UNAUTHORIZED.getCode(),403);
             return null;
         }
     }
