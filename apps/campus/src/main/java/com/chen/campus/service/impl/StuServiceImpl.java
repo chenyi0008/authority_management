@@ -35,5 +35,10 @@ public class StuServiceImpl implements IStuService  {
         return stuDao.campusCardRecharge(id, money);
     }
 
+    @Override
+    public Stu getStuByStuNum(String stuNum) {
+        return stuDao.getStuByNumber(stuNum);
+    }
+
 
 }

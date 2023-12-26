@@ -49,7 +49,7 @@ public class StuController extends BaseController {
     public R<StuDormitoryInfoDTO> getStuById(@PathVariable Long id){
         Stu stu = stuService.getStuById(id);
         StuDormitoryInfoDTO dto = dozerUtils.map(stu, StuDormitoryInfoDTO.class);
-        System.out.println(stu.toString());
+//        System.out.println(stu.toString());
 
         if(stu.getDormitoryId() != null){
             Dormitory dormitory = dormitoryService.getById(stu.getDormitoryId());

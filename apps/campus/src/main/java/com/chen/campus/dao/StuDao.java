@@ -45,6 +45,9 @@ public interface StuDao {
     @Update("UPDATE campus_stu SET balance = balance + #{money} WHERE id = #{id}")
     public Integer campusCardRecharge(@Param("id") Long id, @Param("money") double money);
 
+    @Select("select * from campus_stu where number = #{number}")
+    public Stu getStuByNumber(@Param("number") String number);
+
 
 //    @Select("SELECT " +
 //            "au.id, au.account, au.name, au.mobile, " +

@@ -45,5 +45,8 @@ public class DormitoryServiceImpl extends ServiceImpl<DormitoryDao, Dormitory> i
         return integer;
     }
 
-
+    public Integer unbindStuToDormitory(Long stuId){
+        Integer integer = dormitoryDao.unbindStuToDormitory(stuId);
+        return integer;
+    }
 }

@@ -62,6 +62,7 @@ public class StuDormitoryInfoDTO {
 
     private Dormitory dormitory;
 
+
     /**
      * 是否通过四级
      */
@@ -85,6 +86,12 @@ public class StuDormitoryInfoDTO {
      */
     @ApiModelProperty(value = "是否退宿")
     private Boolean checkOut;
+
+    /**
+     * 是否退宿
+     */
+    @ApiModelProperty(value = "余额")
+    private Double balance;
 
 
 }

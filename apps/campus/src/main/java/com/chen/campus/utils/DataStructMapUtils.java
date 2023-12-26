@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class DataStructMapUtils {
 
-
     public static List<Map<String, Object>> convertToDesiredStructure(List<Lesson> lessons) {
         Map<String, Map<String, Map<String, Object>>> convertedData = new HashMap<>();
 

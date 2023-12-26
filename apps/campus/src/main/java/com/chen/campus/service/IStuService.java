@@ -14,4 +14,6 @@ public interface IStuService {
 
     public Integer campusCardRecharge(Long id, double balance);
 
+    public Stu getStuByStuNum(String stuNum);
+
 }

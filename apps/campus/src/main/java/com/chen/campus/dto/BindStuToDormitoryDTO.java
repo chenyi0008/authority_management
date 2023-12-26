@@ -17,7 +17,7 @@ import javax.validation.constraints.Min;
 public class BindStuToDormitoryDTO {
 
     @Min(value = 1L, message = "id无效")
-    long stuId;
+    String stuNum;
 
     @Min(value = 1L, message = "id无效")
     long dormitoryId;

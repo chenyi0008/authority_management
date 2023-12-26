@@ -19,4 +19,6 @@ public interface IDormitoryService extends IService<Dormitory> {
     public Boolean updateDormitory(DormitoryDTO dto);
 
     public Integer bindStuToDormitory(Long stuId, Long dormitoryId);
+
+    public Integer unbindStuToDormitory(Long stuId);
 }

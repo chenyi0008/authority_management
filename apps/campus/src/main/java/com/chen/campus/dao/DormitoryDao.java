@@ -25,6 +25,9 @@ public interface DormitoryDao extends BaseMapper<Dormitory> {
     @Update("UPDATE campus_stu SET dormitory_id = #{dormitoryId} WHERE id = #{stuId}")
     public Integer bingStuToDormitory(Long stuId, Long dormitoryId);
 
+    @Update("UPDATE campus_stu SET dormitory_id = NULL WHERE id = #{stuId}")
+    public Integer unbindStuToDormitory(Long stuId);
+
 
 
 }

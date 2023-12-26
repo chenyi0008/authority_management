@@ -1,6 +1,10 @@
 package com.chen.campus.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.chen.base.BaseController;
 import com.chen.base.R;
 import com.chen.campus.dto.BindStuToDormitoryDTO;
@@ -12,6 +16,7 @@ import com.chen.campus.entity.Stu;
 import com.chen.campus.service.IDormitoryService;
 import com.chen.campus.service.IStuService;
 import com.chen.dozer.DozerUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +32,7 @@ import java.util.stream.Collectors;
  * @author chen
  * @since 2023-11-19
  */
+@Slf4j
 @RestController
 @RequestMapping("/dormitory")
 public class DormitoryController extends BaseController {
@@ -37,6 +43,7 @@ public class DormitoryController extends BaseController {
     DozerUtils dozerUtils;
     @Autowired
     IStuService stuService;
+
 
     /**
      * 获取所有宿舍信息
@@ -99,14 +106,38 @@ public class DormitoryController extends BaseController {
      */
     @PutMapping("/bind")
     public R bindStuToDormitory(@RequestBody @Validated BindStuToDormitoryDTO dto){
-        Integer integer = dormitoryService.bindStuToDormitory(dto.getStuId(), dto.getDormitoryId());
+        Stu stu = stuService.getStuByStuNum(dto.getStuNum());
+        if(stu == null){
+            return R.fail("不存在此学生");
+        }
+        Integer integer = dormitoryService.bindStuToDormitory(stu.getId(), dto.getDormitoryId());
         if(integer > 0){
-
             return R.success();
 
         } else {
 
             return R.fail("绑定失败");
+
+        }
+    }
+
+    /**
+     * 学生解绑宿舍
+     * @param stuNum
+     * @return
+     */
+    @PutMapping("/unbind")
+    public R unbindStuToDormitory(String stuNum){
+        Stu stu = stuService.getStuByStuNum(stuNum);
+        if(stu == null){
+            return R.fail("不存在此学生");
+        }
+        Integer integer = dormitoryService.unbindStuToDormitory(stu.getId());
+        if(integer > 0){
+            log.info("解绑结果：{}", integer);
+            return R.success();
+        } else {
+            return R.fail("解绑失败");
 
         }
     }
