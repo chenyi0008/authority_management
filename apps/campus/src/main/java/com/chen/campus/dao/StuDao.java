@@ -12,7 +12,7 @@ public interface StuDao {
 
     @Select("SELECT " +
             "au.id, au.account, au.name, au.mobile, " +
-            "cs.school, cs.number, cs.id_card_number, cs.dormitory_id, cs.cet4, cs.cet6, cs.check_out, cs.credit " +
+            "cs.school, cs.number, cs.id_card_number, cs.dormitory_id, cs.cet4, cs.cet6, cs.check_out, cs.credit, cs.balance " +
             "FROM auth_user au " +
             "LEFT JOIN campus_stu cs ON au.id = cs.id " +
             "WHERE au.id = #{id}")
@@ -20,8 +20,8 @@ public interface StuDao {
 
 
     @Select("SELECT " +
-            "au.id, au.account, au.name, au.mobile, " +
-            "cs.school, cs.number, cs.id_card_number, cs.dormitory_id, cs.cet4, cs.cet6, cs.check_out, cs.credit " +
+            "au.id, au.account, au.name, au.mobile," +
+            "cs.school, cs.number, cs.id_card_number, cs.dormitory_id, cs.cet4, cs.cet6, cs.check_out, cs.credit, cs.balance " +
             "FROM auth_user au " +
             "LEFT JOIN campus_stu cs ON au.id = cs.id ")
     public List<Stu> selectAllUsersAndStu();

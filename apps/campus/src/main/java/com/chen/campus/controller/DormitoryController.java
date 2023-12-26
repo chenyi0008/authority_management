@@ -123,16 +123,16 @@ public class DormitoryController extends BaseController {
 
     /**
      * 学生解绑宿舍
-     * @param stuNum
+     * @param stuId
      * @return
      */
     @PutMapping("/unbind")
-    public R unbindStuToDormitory(String stuNum){
-        Stu stu = stuService.getStuByStuNum(stuNum);
-        if(stu == null){
-            return R.fail("不存在此学生");
-        }
-        Integer integer = dormitoryService.unbindStuToDormitory(stu.getId());
+    public R unbindStuToDormitory(Long stuId){
+//        Stu stu = stuService.getStuByStuNum(stuNum);
+//        if(stu == null){
+//            return R.fail("不存在此学生");
+//        }
+        Integer integer = dormitoryService.unbindStuToDormitory(stuId);
         if(integer > 0){
             log.info("解绑结果：{}", integer);
             return R.success();

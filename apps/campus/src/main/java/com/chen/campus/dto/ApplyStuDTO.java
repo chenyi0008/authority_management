@@ -16,6 +16,8 @@ import lombok.experimental.Accessors;
 @ApiModel(value = "ApplyStuDTO", description = "申请查询DTO")
 public class ApplyStuDTO {
 
+    private Long id;
+
     private Long stuId;
 
     private String type;
