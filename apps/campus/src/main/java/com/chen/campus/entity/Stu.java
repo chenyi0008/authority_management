@@ -39,8 +39,8 @@ public class Stu extends Entity<Long> {
     /**
      * 编号
      */
-    @ApiModelProperty(value = "编号")
-    @NotEmpty(message = "学生编号不能为空")
+    @ApiModelProperty(value = "学号")
+    @NotEmpty(message = "学生学号不能为空")
     @Length(max = 10, min = 6,  message = "账号长度范围在6-10之间")
     private String number;
 

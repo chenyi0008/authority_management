@@ -22,8 +22,8 @@ public interface StuDao {
     @Select("SELECT " +
             "au.id, au.account, au.name, au.mobile," +
             "cs.school, cs.number, cs.id_card_number, cs.dormitory_id, cs.cet4, cs.cet6, cs.check_out, cs.credit, cs.balance " +
-            "FROM auth_user au " +
-            "LEFT JOIN campus_stu cs ON au.id = cs.id ")
+            "FROM campus_stu cs " +
+            "LEFT JOIN auth_user au ON au.id = cs.id ")
     public List<Stu> selectAllUsersAndStu();
 
     @Update({
@@ -45,7 +45,7 @@ public interface StuDao {
     @Update("UPDATE campus_stu SET balance = balance + #{money} WHERE id = #{id}")
     public Integer campusCardRecharge(@Param("id") Long id, @Param("money") double money);
 
-    @Select("select * from campus_stu where number = #{number}")
+    @Select("SELECT * FROM campus_stu cs LEFT JOIN auth_user au ON au.id = cs.id WHERE number = #{number}")
     public Stu getStuByNumber(@Param("number") String number);
 
 

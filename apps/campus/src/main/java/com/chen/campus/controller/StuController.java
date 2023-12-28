@@ -59,6 +59,30 @@ public class StuController extends BaseController {
         return R.success(dto);
     }
 
+
+    /**
+     * 根据学号获取学生信息（含绑定宿舍信息）
+     * @param stuNum
+     * @return
+     */
+    @GetMapping("/stu-num")
+    public R<StuDormitoryInfoDTO> getStuByStuNum(@RequestParam String stuNum){
+        Stu stu = stuService.getStuByStuNum(stuNum);
+        if(stu == null){
+            return R.fail("不存在此学生");
+        }
+        log.info("stu:{}", stu.toString());
+        StuDormitoryInfoDTO dto = dozerUtils.map(stu, StuDormitoryInfoDTO.class);
+
+        log.info("dto:{}", dto.toString());
+        if(stu.getDormitoryId() != null){
+            Dormitory dormitory = dormitoryService.getById(stu.getDormitoryId());
+            dto.setDormitory(dormitory);
+        }
+
+        return R.success(dto);
+    }
+
     /**
      * 更新学生信息
      * @param dto
